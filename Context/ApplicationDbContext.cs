@@ -6,6 +6,7 @@ namespace webapp_travel_agency.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<TravelBox>? TravelBox { get; set; }
+        public DbSet<Message>? Message { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,6 +15,11 @@ namespace webapp_travel_agency.Data
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
+        {
+
+        }
+
+        public ApplicationDbContext()
         {
 
         }

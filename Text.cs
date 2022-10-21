@@ -35,5 +35,12 @@ using System.Diagnostics;
 
 
 //MILESTONE 4: 
-    
+
 //Sempre nella Homepage, prevedere un bottone (oppure ancora meglio un evento click sull’intera card) per andare nei dettagli del pacchetto di cui l’utente vuole avere maggiori informazioni e visualizzare singolarmente. Anche questa pagina di dettaglio pacchetto dovrà essere popolata con i dati provenienti da una chiamata AXIOS alla web API che fornisce l’oggetto JSON del pacchetto selezionato.
+
+
+//MILESTONE 5: 
+    
+//Prevedere una Web API con cui sia possibile inviare un messaggio da parte del cliente all’agenzia per richiedere ulteriori informazioni in merito al pacchetto visualizzato nella pagina dettaglio pacchetto. Questa API potrà essere richiamata tramite AXIOS, a partire dalla pagina di visualizzazione dettagliata di un singolo pacchetto, una volta che avrà compilato un apposito form presente nella pagina. L’API dovrà occuparsi di salvare tale messaggio nel database che verrà associato al pacchetto dove è stata richiesta l’informazione
+//Se la richiesta è chiara procedete concordemente alle attività che avete in coda,
+//altrimenti ricordatevi sempre di chiedere chiarimenti.

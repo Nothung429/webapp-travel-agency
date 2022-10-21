@@ -3,29 +3,27 @@ using webapp_travel_agency.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
-public class TravelBox
+public class Message
 {
     public int Id { get; set; }
 
     [Required(ErrorMessage = "Il campo è obbligatorio")]
-    public string? Image { get; set; }
+    public string? Name { get; set; }
 
     [Required(ErrorMessage = "Il campo è obbligatorio")]
     public string? Title { get; set; }
 
     [Required(ErrorMessage = "Il campo è obbligatorio")]
-    public int? Price { get; set; }
+    public string? Text { get; set; }
 
     [Required(ErrorMessage = "Il campo è obbligatorio")]
-    public string? Description { get; set; }
-
-    [Required(ErrorMessage = "Il campo è obbligatorio")]
-    public int? TravelDays { get; set; }
+    public string? EMail { get; set; }
 
     //ONE-TO-MANY
-    public List<Message>? Messages { get; set; }
+    public int? TravelBoxId { get; set; }
+    public TravelBox? TravelBox { get; set; }
 
-    public TravelBox()
+    public Message()
     {
 
     }
