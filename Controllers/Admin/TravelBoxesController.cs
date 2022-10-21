@@ -28,7 +28,7 @@ namespace webapp_travel_agency.Controllers.Admin
         [HttpGet]
         public ActionResult Details(int Id)
         {
-            TravelBox travelSearch = _context.TravelBox.Where(p => p.Id == Id).Include(p => p.Messages).First();
+            TravelBox travelSearch = _context.TravelBox.Where(p => p.Id == Id).Include(p => p.Messages).FirstOrDefault();
 
             return View(travelSearch);
         }

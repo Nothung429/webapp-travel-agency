@@ -47,5 +47,11 @@ using System.Diagnostics;
 
 
 //MILESTONE 6:
-    
+
 //Fornire la possibilità a partire dall’area amministrazione, di poter visualizzare le richieste di informazioni da parte dei clienti per ogni pacchetto all’interno della pagina di dettaglio da parte dell’area di amministrazione del singolo pacchetto. In questo caso la pagina dettaglio pacchetto lato amministrazione dovrà essere compilata con le richieste degli utenti tramite Razor.
+
+
+//Milestone 7:
+
+//permettere con un pulsante nell'area amministrativa, nella sezione dei pacchetti di viaggio (lista), di generare un file csv contenente le informazioni sul db riguardo alla singola tabella dei pacchetti di viaggio
+//se riuscite potete: 1) scaricare direttamente il file una volta generato (più complesso) oppure 2) portare l'utente ad una vista che contiene tutti i file generati e che possano essere scaricati dall'utente con un click (dovrebbe essere meno complesso)
