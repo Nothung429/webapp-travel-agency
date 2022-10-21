@@ -12,7 +12,6 @@ namespace webapp_travel_agency.Controllers.Admin
     public class TravelBoxesController : Controller
     {
         private readonly ApplicationDbContext _context;
-
         public TravelBoxesController(ApplicationDbContext context)
         {
             _context = context;
