@@ -1,8 +1,8 @@
-﻿@model TravelBox
-
-@{
+﻿@{
     ViewData["Title"] = "Details";
 }
+
+@model TravelBox
 
 <h1>Details</h1>
 
@@ -41,6 +41,18 @@
             @Html.DisplayFor(model => model.TravelDays)
         </dd>
     </dl>
+    <div>
+        @if (Model.Messages != null)
+        {
+            @foreach (Message message in Model.Messages)
+            {
+                <h4>@message.Title</h4>
+                <p>@message.Text</p>
+                <p>@message.Name</p>
+                <p>@message.EMail</p>
+            }
+        }
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

@@ -21,25 +21,16 @@ namespace webapp_travel_agency.Controllers.Admin
         // GET: TravelBoxes
         public async Task<IActionResult> Index()
         {
-              return View(await _context.TravelBox.ToListAsync());
+            return View(await _context.TravelBox.ToListAsync());
         }
 
         // GET: TravelBoxes/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet]
+        public ActionResult Details(int Id)
         {
-            if (id == null || _context.TravelBox == null)
-            {
-                return NotFound();
-            }
+            TravelBox travelSearch = _context.TravelBox.Where(p => p.Id == Id).Include(p => p.Messages).First();
 
-            var travelBox = await _context.TravelBox
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (travelBox == null)
-            {
-                return NotFound();
-            }
-
-            return View(travelBox);
+            return View(travelSearch);
         }
 
         // GET: TravelBoxes/Create

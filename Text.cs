@@ -40,7 +40,12 @@ using System.Diagnostics;
 
 
 //MILESTONE 5: 
-    
+
 //Prevedere una Web API con cui sia possibile inviare un messaggio da parte del cliente all’agenzia per richiedere ulteriori informazioni in merito al pacchetto visualizzato nella pagina dettaglio pacchetto. Questa API potrà essere richiamata tramite AXIOS, a partire dalla pagina di visualizzazione dettagliata di un singolo pacchetto, una volta che avrà compilato un apposito form presente nella pagina. L’API dovrà occuparsi di salvare tale messaggio nel database che verrà associato al pacchetto dove è stata richiesta l’informazione
 //Se la richiesta è chiara procedete concordemente alle attività che avete in coda,
 //altrimenti ricordatevi sempre di chiedere chiarimenti.
+
+
+//MILESTONE 6:
+    
+//Fornire la possibilità a partire dall’area amministrazione, di poter visualizzare le richieste di informazioni da parte dei clienti per ogni pacchetto all’interno della pagina di dettaglio da parte dell’area di amministrazione del singolo pacchetto. In questo caso la pagina dettaglio pacchetto lato amministrazione dovrà essere compilata con le richieste degli utenti tramite Razor.

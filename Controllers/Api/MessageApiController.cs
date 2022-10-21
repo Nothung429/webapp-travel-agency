@@ -15,9 +15,16 @@ namespace webapp_travel_agency.Controllers.Api
             context = new ApplicationDbContext();
         }
 
-        [HttpPost]
-        public ActionResult SendMessage(Message message)
+        [HttpPost("{id}")]
+        public ActionResult SendMessage(int id, Message message)
         {
+            TravelBox travelBox = context.TravelBox.Where(package => package.Id == id).First();
+            if (travelBox == null)
+            {
+                return NotFound();
+            }
+            message.TravelBoxId = id;
+
             context.Message.Add(message);
             context.SaveChanges();
 
