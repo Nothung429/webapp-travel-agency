@@ -2,7 +2,102 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="mb-5">
+        <h1 class="text-center display-4 mb-3">Welcome to Travel Agency Totò Cutugno</h1>
+    </div>
+    <div>
+        <input type="text" class="form-control" id="travel-search" placeholder="Cerca">
+    </div>
+    <table class="table table-dark table-striped table-hover mt-4">
+        <thead>
+            <tr>
+                <th scope="col">Immagine</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Prezzo</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Giorni di Viaggio</th>
+                <th scope="col">Azioni</th>
+            </tr>
+        </thead>
+        <tbody id="axios-travel">
+
+        </tbody>
+    </table>
 </div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+
+        const TravelList = document.querySelector("#axios-travel");
+
+        const Search = document.querySelector("#travel-search");
+
+        let list;
+
+        Search.addEventListener("keyup", searchTravel)
+
+        function searchTravel() {
+            let title = this.value;
+
+            result(title);
+        }
+
+        result();
+
+        function result(title){
+            axios.get('/api/TravelBoxesApi/GetTravelBox', 
+            {
+                params:
+                {
+                    title: title
+                }
+            }
+            ).then(function (response) {
+                console.log("Dati trovati", response);
+
+                response.data.forEach(travel => {
+                    TravelList.innerHTML +=
+                    `
+                        <tr>
+                            <td>
+                                <img width="100" height="100" src="${travel.image}" class="rounded-circle">
+                            </td>
+                            <td>
+                                <h3>${travel.title}</h3>
+                            </td>
+                            <td>
+                                <h4>${travel.price}€</h4>
+                            </td>
+                            <td>
+                                <p>${travel.description}</p>
+                            </td>
+                            <td>
+                                <h4>${travel.traveldays}</h4>
+                            </td>
+                            <td>
+                                <a href="/Home/Details/${travel.id}" class="btn btn-outline-info">Visualizza</a>
+                                <a href="/Home/Update/${travel.id}" class="btn btn-outline-warning">Modifica</a>
+                                <button onclick="deletePizza(${travel.id})" class="btn btn-outline-danger">Cancella</button>
+                            </td>
+                        </tr>
+                    `
+                });
+            })
+            .catch(error => {
+                console.log("Dati non trovati", error);
+            });
+        }
+
+        function deletePizza(id) {
+            axios.delete('/api/home/delete/' + id).then(res => {
+                console.log(res);
+                alert("somebody once told me the world is gonna roll me");
+            }).catch(err => {
+                console.log(err);
+                alert("Gesù mi ama! LO SO! Perché lo dice la bibbia!");
+            })
+        }
+    </script>
+}

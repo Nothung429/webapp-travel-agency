@@ -22,15 +22,39 @@ namespace webapp_travel_agency.Controllers.Api
 
         // GET: api/TravelBoxesApi
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TravelBox>>> GetTravelBox()
+        public IActionResult GetTravelBox(string? title)
         {
-            return await _context.TravelBox.ToListAsync();
+            IQueryable<TravelBox> TravelBoxDB;
+
+            if (title != null)
+            {
+                TravelBoxDB = _context.TravelBox.Where(travelbox => travelbox.Title.ToLower().Contains(title.ToLower()));
+            }
+            else
+            {
+                TravelBoxDB = _context.TravelBox;
+            }
+
+            return Ok(TravelBoxDB.ToList<TravelBox>());
         }
 
         // GET: api/TravelBoxesApi/5
+        //[HttpGet("{id}")]
+        //public IActionResult Get(int id)
+        //{
+        //    TravelBox travel = _context.TravelBox.Where(p => p.Id == id).First();
+
+        //    return Ok(travel);
+        //}
+
         [HttpGet("{id}")]
         public async Task<ActionResult<TravelBox>> GetTravelBox(int id)
         {
+            if (_context.TravelBox == null)
+            {
+                return NotFound();
+            }
+
             var travelBox = await _context.TravelBox.FindAsync(id);
 
             if (travelBox == null)
