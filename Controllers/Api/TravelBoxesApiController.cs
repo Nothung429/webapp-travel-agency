@@ -22,7 +22,7 @@ namespace webapp_travel_agency.Controllers.Api
 
         // GET: api/TravelBoxesApi
         [HttpGet]
-        public IActionResult GetTravelBox(string? title)
+        public IActionResult GetTravelBoxList(string? title)
         {
             IQueryable<TravelBox> TravelBoxDB;
 
@@ -39,31 +39,27 @@ namespace webapp_travel_agency.Controllers.Api
         }
 
         // GET: api/TravelBoxesApi/5
-        //[HttpGet("{id}")]
-        //public IActionResult Get(int id)
-        //{
-        //    TravelBox travel = _context.TravelBox.Where(p => p.Id == id).First();
-
-        //    return Ok(travel);
-        //}
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<TravelBox>> GetTravelBox(int id)
+        public IActionResult GetTravelBoxId(int id)
         {
-            if (_context.TravelBox == null)
-            {
-                return NotFound();
-            }
+            TravelBox travel = _context.TravelBox.Where(p => p.Id == id).FirstOrDefault();
 
-            var travelBox = await _context.TravelBox.FindAsync(id);
-
-            if (travelBox == null)
-            {
-                return NotFound();
-            }
-
-            return travelBox;
+            return Ok(travel);
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // PUT: api/TravelBoxesApi/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

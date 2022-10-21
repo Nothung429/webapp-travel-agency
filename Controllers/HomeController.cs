@@ -23,9 +23,9 @@ namespace webapp_travel_agency.Controllers
             return View();
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            return View(id);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
